@@ -13,10 +13,8 @@ class UrlManager(object):
     def add_new_url(self, url):
         if url is None:
             return
-        # if url not in self.new_urls and url not in self.visited_urls:
         if url not in self.visited_urls:
             self.new_urls.put(url)
-            # todo:此处应该优化
 
     def add_new_urls(self, urls):
         if urls is None or len(urls) == 0:
@@ -38,7 +36,6 @@ class UrlManager(object):
     def has_wrong_url(self):
         return len(self.timeout_urls) != 0
 
-    # todo:测试用，记得删除
     def show_urls(self):
         return self.new_urls
 
@@ -48,8 +45,5 @@ class UrlManager(object):
     def num_visited_url(self):
         return len(self.visited_urls)
 
-    # todo:test
     def get_visited_url(self):
         return self.visited_urls.pop()
-
-

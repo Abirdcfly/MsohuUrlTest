@@ -3,7 +3,8 @@
 
 from util.UrlManager import UrlManager
 from webtest import WebTestMain
-import threading, time
+import threading
+import time
 
 
 wt = WebTestMain()
@@ -36,18 +37,6 @@ def craw(time_out, final_number, id='', delay=0):
         print u'已检查页面数量: ',UM.num_visited_url()
         print u' 剩余页面数量: ',UM.num_new_url()
 
-    # def show():
-    #     pass
-    # # todo: 将效果显示到页面。
-
-
-# def create_jobs(root_url):
-#
-#     # prevent race conditions
-#     # tell thread to 'wait its turn'
-#     queue.join()
-#     crawl()
-
 
 def create_thread(nthread, final_number, time_out):
     threadsPool = []
@@ -66,50 +55,6 @@ def create_thread(nthread, final_number, time_out):
         print u'线程 [%s] 完成' % i
 
 
-# def work():
-#     while True:
-#         link = queue.get()
-#         Spider.crawl_page(threading.current_thread().name, link)
-#         queue.task_done()
-#
-#
-#
-#
-# class WebTestThread(threading.Thread):
-#     def __init__(self, root_url, final_count, name ='',):
-#         threading.Thread.__init__(self)
-#         self.name = name
-#         self.setDaemon(True)
-#         self.root_url = root_url
-#         self.final_count = final_count
-#         self.webtest = WebTestMain(self.root_url, self.final_count)
-#
-#     def run(self):
-#         self.webtest.craw()
-#
-#
-# class ThreadController(object):
-#     def __init__(self, nthread, root_url, final_count):
-#         self.threadsPool = []
-#         self.nthread = nthread
-#         self.root_url =root_url
-#         self.final_count =final_count
-#
-#     def start(self):
-
-        # for i in range(self.nthread):
-        #     t = WebTestThread(self.root_url, self.final_count, str(i))
-        #     self.threadsPool.append(t)
-        #
-        # for i in range(self.nthread):
-        #     print u'线程 [%s] 启动' % i
-        #     self.threadsPool[i].start()
-        #
-        # for i in range(self.nthread):
-        #     self.threadsPool[i].join()
-        #     print u'线程 [%s] 完成' % i
-
-# fixme:
 def show_visited_url(final_number):
     import os
     log_path = os.path.dirname(__file__) + '/logs/'
@@ -118,5 +63,3 @@ def show_visited_url(final_number):
         url = UM.get_visited_url()
         f.writelines('\n')
         f.writelines(url)
-
-

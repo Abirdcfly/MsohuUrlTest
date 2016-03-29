@@ -1,7 +1,9 @@
 # !/usr/bin/env python
 # -*- coding:utf-8 -*-
+
 from Queue import Queue
 from collections import deque
+
 
 class SetUniqueQueue(Queue):
     """

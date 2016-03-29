@@ -44,7 +44,6 @@ class WebTestMain(object):
         bad_links = {}
         if soup.title == "手机搜狐" and url != 'http://m.sohu.com':
             bad_links[url] = 404
-            # todo:坏链处理。。。
             return False, bad_links
         return True, None
 
@@ -77,7 +76,6 @@ class WebTestMain(object):
         else:
             return False, bad_links
 
-
     def collect_data(self, data):
         if data is None:
             return
@@ -93,7 +91,6 @@ class WebTestMain(object):
                 f.write('%s:%s' % (i, j) + '\n')
         else:
             f.write("共扫描 %d 个页面，未发现错误！" % pages)
-
 
     def _getLogsPath(self):
         log_path = os.path.dirname(__file__) + '/logs/'  # todo 适配win和linux
