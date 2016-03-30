@@ -31,12 +31,20 @@ class WebTestMain(object):
             else:
                 data = response.read()
             return state, data
-        except (urllib2.HTTPError, urllib2.URLError), error:
+        except urllib2.HTTPError, error:
             bad_links[url] = error.code
+            state = False
+            return state, bad_links
+        except urllib2.URLError, error:
+            bad_links[url] = error
             state = False
             return state, bad_links
         except socket.timeout:
             bad_links[url] = '  time_out'
+            state = False
+            return state, bad_links
+        except :
+            bad_links[url] = 'error'
             state = False
             return state, bad_links
 
