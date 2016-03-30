@@ -56,7 +56,12 @@ def craw_level(n_level, time_out, final_number, id='', delay=0):
             else:
                 wt.collect_data(content)
             print u'已检查页面数量: ',UM[i].num_visited_url()
-            print u' 剩余页面数量: ',UM[i+1].num_new_url()
+
+            if i == n_level:
+                print u' 剩余页面数量: ', UM[i].num_new_url()
+            else:
+                print u' 剩余页面数量: ',UM[i+1].num_new_url()
+
         print u'\n 第 %s 层检查完成' % i
         i += 1
 
